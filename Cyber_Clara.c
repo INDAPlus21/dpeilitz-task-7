@@ -1,36 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-// Compare integers.
-int cmp_int(const void *a, const void *b)
-{
-   return *(int *)a - *(int *)b;
-}
+#include <string.h>
 
 int main()
 {
-   long guests;
-   long firstname[guests], lastname[guests], ;
-   ;
-   scanf("%d", &guests);
-   for (i = 0; i < guests; i++)
-      scanf("%s", &firstname[i];
+   //get the number of names
+   unsigned long int size;
+   char name[42], surname[21];
+   scanf("%lu", &size);
+   char names[size][42];
 
-   for (i = 0; i < guests; i++)
-      scanf("%s", &lastname[i]);
+   for (int i = 0; i < size; i++)
+   {
+      scanf("%s", name);
+      strcpy(names[i], name);
+      strcat(names[i], " ");
+   }
 
-      if (&lastname[i])
-   // int i, size;
-   // int total = 0;
-   // int *numbers;
-   // scanf("%d", &size);
-   // numbers = malloc(size * sizeof(int));
-   // for (i = 0; i < size; i++)
-   //    scanf("%d", &numbers[i]);
+   for (int i = 0; i < size; i++)
+   {
+      scanf("%s", surname);
+      strcat(names[i], surname);
+   }
 
-   // qsort((void *)numbers, (size_t)size, sizeof(int), cmp_int);
+   qsort(names, size, sizeof(names[0]), strcmp);
 
-   // for (i = 0; i < (size + 1) / 2; i++)
-   //    total += numbers[size - i - 1];
-   // printf("%d", total);
+   unsigned long int output = size;
+   for (int i = 1; i < size; i++)
+   {
+
+      if (strcmp(names[i - 1], names[i]) == 0)
+
+         output--;
+   }
+
+   printf("%lu", output);
 }
